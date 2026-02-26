@@ -5,6 +5,7 @@ This project uses Next.js + React and includes:
 - Home page (`/`)
 - About page (`/about`)
 - React API route (`/api/react`)
+- External API proxy route (`/api/users`)
 - MariaDB health API route (`/api/db-health`)
 
 ## Prerequisites
@@ -48,6 +49,10 @@ MARIADB_USER=root
 MARIADB_PASSWORD=your_password
 MARIADB_DATABASE=test
 MARIADB_CONNECTION_LIMIT=5
+
+# External API proxy route
+API_BASE_URL=https://jsonplaceholder.typicode.com
+API_KEY=
 ```
 
 3. Test DB connection via API route:
@@ -55,6 +60,26 @@ MARIADB_CONNECTION_LIMIT=5
 - http://localhost:3000/api/db-health
 
 If the connection succeeds, you get JSON with `status: "ok"`, server time, and MariaDB version.
+
+
+## External API proxy route (best practice)
+
+This project now includes a Next.js API route that proxies requests to an external backend:
+
+- Local route: `GET /api/users`
+- Upstream route: `${API_BASE_URL}/users`
+
+Why use this pattern:
+
+- Keeps API keys server-side
+- Avoids exposing backend internals to the browser
+- Centralizes error handling for external API calls
+
+Set `API_BASE_URL` in `.env.local` (or `.env`) and restart `npm run dev`, then open:
+
+- http://localhost:3000/api/users
+
+If your editor shows `process.env.API_BASE_URL` as unresolved inside API routes, this is usually a static-analysis warning only; the variable is read at runtime by Next.js from your env files.
 
 ## Build for production
 
