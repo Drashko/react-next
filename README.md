@@ -21,7 +21,9 @@ npm run dev
 
 Then open:
 
-- http://localhost:3000
+- http://localhost:3000 (Home page)
+- http://localhost:3000/about (About page)
+- http://localhost:3000/api/react (React API route)
 
 ## Build for production
 
@@ -34,6 +36,13 @@ npm run build
 ```bash
 npm run start
 ```
+
+## What is included
+
+- **Home page** (`/`) with a fetch call to `/api/react`
+- **About page** (`/about`)
+- **Navigation bar** shared across pages
+- **API route** (`/api/react`) returning React version info
 
 ## Notes
 
