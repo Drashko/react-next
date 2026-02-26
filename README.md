@@ -1,11 +1,17 @@
 # React + Next.js Setup
 
-This project is configured to use the latest `next`, `react`, and `react-dom` packages.
+This project uses Next.js + React and includes:
+
+- Home page (`/`)
+- About page (`/about`)
+- React API route (`/api/react`)
+- MariaDB health API route (`/api/db-health`)
 
 ## Prerequisites
 
 - Node.js 18.18+ (recommended: current LTS)
 - npm 9+
+- A running MariaDB server (for database route testing)
 
 ## Install dependencies
 
@@ -19,31 +25,44 @@ npm install
 npm run dev
 ```
 
-Then open:
+Open:
 
-- http://localhost:3000 (Home page)
-- http://localhost:3000/about (About page)
-- http://localhost:3000/api/react (React API route)
+- http://localhost:3000
+- http://localhost:3000/about
+- http://localhost:3000/api/react
+
+## Connect to MariaDB
+
+1. Create a local env file:
+
+```bash
+cp .env.example .env.local
+```
+
+2. Update credentials in `.env.local`:
+
+```env
+MARIADB_HOST=127.0.0.1
+MARIADB_PORT=3306
+MARIADB_USER=root
+MARIADB_PASSWORD=your_password
+MARIADB_DATABASE=test
+MARIADB_CONNECTION_LIMIT=5
+```
+
+3. Test DB connection via API route:
+
+- http://localhost:3000/api/db-health
+
+If the connection succeeds, you get JSON with `status: "ok"`, server time, and MariaDB version.
 
 ## Build for production
 
 ```bash
 npm run build
-```
-
-## Start production server
-
-```bash
 npm run start
 ```
 
-## What is included
-
-- **Home page** (`/`) with a fetch call to `/api/react`
-- **About page** (`/about`)
-- **Navigation bar** shared across pages
-- **API route** (`/api/react`) returning React version info
-
 ## Notes
 
-If `npm install` fails with a `403 Forbidden` error in your environment, your registry access may be restricted by network/security policy.
+If `npm install` fails with `403 Forbidden` in your environment, your package registry access is restricted by network/security policy.

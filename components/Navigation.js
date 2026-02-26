@@ -16,6 +16,9 @@ export default function Navigation() {
       <Link href="/about" style={linkStyle}>
         About
       </Link>
+      <a href="/api/db-health" style={linkStyle}>
+        DB Health API
+      </a>
     </nav>
   );
 }

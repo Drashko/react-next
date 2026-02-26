@@ -3,8 +3,11 @@ export default function AboutPage() {
     <section>
       <h2>About</h2>
       <p>
-        This project demonstrates basic navigation between pages and a Next.js API route that
-        reports the active React version.
+        This project demonstrates basic navigation between pages and API routes.
+      </p>
+      <p>
+        To test MariaDB connectivity, call <code>/api/db-health</code> after setting your
+        <code> MARIADB_*</code> environment variables.
       </p>
     </section>
   );
