@@ -75,9 +75,11 @@ Why use this pattern:
 - Avoids exposing backend internals to the browser
 - Centralizes error handling for external API calls
 
-Set `API_BASE_URL` in `.env.local`, then open:
+Set `API_BASE_URL` in `.env.local` (or `.env`) and restart `npm run dev`, then open:
 
 - http://localhost:3000/api/users
+
+If your editor shows `process.env.API_BASE_URL` as unresolved inside API routes, this is usually a static-analysis warning only; the variable is read at runtime by Next.js from your env files.
 
 ## Build for production
 

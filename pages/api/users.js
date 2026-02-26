@@ -1,15 +1,18 @@
+/* eslint-env node */
+/* global process */
+
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const apiBaseUrl = process.env.API_BASE_URL;
-  const apiKey = process.env.API_KEY;
+  const { API_BASE_URL: apiBaseUrl, API_KEY: apiKey } = process.env;
 
   if (!apiBaseUrl) {
     return res.status(500).json({
       error: 'API_BASE_URL is not configured',
+      hint: 'Set API_BASE_URL in .env.local (or .env) and restart the Next.js server',
     });
   }
 
