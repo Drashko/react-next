@@ -1,22 +1,20 @@
-import React, { createContext, useEffect, useRef, useState } from 'react'
+import { createContext, useMemo, useState } from 'react';
 
-const AppContext = createContext();
+export const AppContext = createContext({
+  passwordVisible: false,
+  togglePasswordVisibility: () => {},
+});
 
-const AppContextProvider = ({ children }) => {
-    // Password Visible
-    const [passwordVisible, setPasswordVisible] = useState(false);
-    const togglePasswordVisibility = () => {
-        setPasswordVisible(!passwordVisible);
-    };
+export function AppProvider({ children }) {
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
-    return (
-        <AppContext.Provider value={{
-            passwordVisible,
-            togglePasswordVisibility,
-        }}>
-        </AppContext.Provider>
+  const value = useMemo(
+    () => ({
+      passwordVisible,
+      togglePasswordVisibility: () => setPasswordVisible((visible) => !visible),
+    }),
+    [passwordVisible]
+  );
 
-    )
+  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
-
-export { AppContext, AppContextProvider }
