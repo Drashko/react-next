@@ -81,6 +81,26 @@ Set `API_BASE_URL` in `.env.local` (or `.env`) and restart `npm run dev`, then o
 
 If your editor shows `process.env.API_BASE_URL` as unresolved inside API routes, this is usually a static-analysis warning only; the variable is read at runtime by Next.js from your env files.
 
+
+## Troubleshooting `Unable to acquire lock at .next/dev/lock`
+
+If you see this on Windows after a crash/restart, it is usually a **stale lock file**, not a real running server.
+
+- `.next/dev` is expected and is used by Next.js for development build artifacts/cache.
+- The `lock` file prevents two `next dev` processes from writing to the same `.next/dev` folder.
+
+This project runs a `predev` script that only removes the lock when it looks stale (older than 120 seconds by default).
+
+If the lock is recent, startup stops with a clear message so you do not accidentally race two dev servers.
+
+If you are sure the previous run is dead, use:
+
+```bash
+npm run dev:reset
+```
+
+This removes `.next/dev` so a fresh `npm run dev` can recreate it cleanly.
+
 ## Build for production
 
 ```bash
