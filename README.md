@@ -89,9 +89,17 @@ If you see this on Windows after a crash/restart, it is usually a **stale lock f
 - `.next/dev` is expected and is used by Next.js for development build artifacts/cache.
 - The `lock` file prevents two `next dev` processes from writing to the same `.next/dev` folder.
 
-This project now runs a `predev` script that automatically removes a stale lock when the recorded PID is no longer running.
+This project runs a `predev` script that only removes the lock when it looks stale (older than 120 seconds by default).
 
-If a process is actually still running, the script will stop with a clear message instead of deleting the lock.
+If the lock is recent, startup stops with a clear message so you do not accidentally race two dev servers.
+
+If you are sure the previous run is dead, use:
+
+```bash
+npm run dev:reset
+```
+
+This removes `.next/dev` so a fresh `npm run dev` can recreate it cleanly.
 
 ## Build for production
 

@@ -7,7 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "predev": "node scripts/clear-next-dev-lock.js"
+    "predev": "node scripts/clear-next-dev-lock.js",
+    "dev:reset": "node scripts/reset-next-dev.js"
   },
   "keywords": [
     "nextjs",
