@@ -13,12 +13,12 @@ export default function Navigation() {
       <Link href="/" style={linkStyle}>
         Home
       </Link>
-      <Link href="/front/about" style={linkStyle}>
+      <Link href="/about" style={linkStyle}>
         About
       </Link>
-        <Link href="/front/login" style={linkStyle}>
-            Login
-        </Link>
+      <Link href="/login" style={linkStyle}>
+        Login
+      </Link>
       <a href="/api/db-health" style={linkStyle}>
         DB Health API
       </a>
