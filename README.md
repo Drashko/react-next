@@ -6,7 +6,7 @@ This project uses the **Pages Router** in Next.js and keeps all pages/components
 
 - Home page (`/`)
 - About page (`/about`)
-- Login page (`/login`)
+- LoginContent page (`/login`)
 - React API route (`/api/react`)
 - External API proxy route (`/api/users`)
 - MariaDB health API route (`/api/db-health`)

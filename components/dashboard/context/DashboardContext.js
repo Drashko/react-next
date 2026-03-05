@@ -1,6 +1,6 @@
 import { createContext, useMemo, useState } from 'react';
 
-export const AppContext = createContext({
+export const DashboardContext = createContext({
   passwordVisible: false,
   togglePasswordVisibility: () => {},
 });
@@ -16,5 +16,5 @@ export function AppProvider({ children }) {
     [passwordVisible]
   );
 
-  return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
+  return <DashboardContext.Provider value={value}>{children}</DashboardContext.Provider>;
 }

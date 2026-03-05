@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function HomePage() {
+export default function Home() {
   const [apiMessage, setApiMessage] = useState('Loading API message...');
   const [users, setUsers] = useState([]);
   const [usersError, setUsersError] = useState('');
@@ -29,7 +29,7 @@ export default function HomePage() {
     }
 
     loadMessage();
-    loadUsers();
+    // loadUsers();
   }, []);
 
   return (
@@ -45,9 +45,9 @@ export default function HomePage() {
         <p>{usersError}</p>
       ) : (
         <ul>
-          {users.map((user) => (
-            <li key={user.id}>{user.name || user.username || `User ${user.id}`}</li>
-          ))}
+          {/*{users.map((user) => (*/}
+          {/*  <li key={user.id}>{user.name || user.username || `User ${user.id}`}</li>*/}
+          {/*))}*/}
         </ul>
       )}
     </section>
