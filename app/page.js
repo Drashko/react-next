@@ -1,5 +1,10 @@
-import { redirect } from 'next/navigation';
+import HomeContent from './(public)/page';
+import PublicLayoutShell from '../components/public/PublicLayoutShell';
 
 export default function HomePage() {
-  redirect('/front');
+  return (
+    <PublicLayoutShell>
+      <HomeContent />
+    </PublicLayoutShell>
+  );
 }
